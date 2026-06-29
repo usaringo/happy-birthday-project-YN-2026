@@ -1,5 +1,18 @@
 function unlockNo(){
-    console.log("unlockNo");
+
+    no.addEventListener(
+        "touchstart",
+        function(e){
+
+            e.preventDefault();
+
+            move(no);
+        }
+    );
+
+    // 最初に一回移動させて
+    // 「あっ逃げた！」感を演出
+    move(no);
 }
 
 function convertToYesNo(){
