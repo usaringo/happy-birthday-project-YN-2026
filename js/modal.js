@@ -1,3 +1,7 @@
+function createNoButtons(){
+    console.log("createNoButtons");
+}
+
 function showImageModal(){
     modal.style.display="block";
 }
