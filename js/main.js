@@ -1,3 +1,9 @@
+console.log("main.js loaded");
+
+const yes = document.getElementById("yes");
+console.log(yes);
+
+
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 
