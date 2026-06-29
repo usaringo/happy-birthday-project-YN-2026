@@ -35,6 +35,7 @@ function showImageModal(){
             "click",
             closeImageModal
         );
+}
 
 function closeImageModal(){
     modal.style.display="none";
