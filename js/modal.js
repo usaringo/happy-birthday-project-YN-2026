@@ -1,3 +1,6 @@
+const modal =
+    document.getElementById("modal");
+
 function createNoButtons(){
     console.log("createNoButtons");
 }
