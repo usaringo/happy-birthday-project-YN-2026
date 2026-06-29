@@ -1,74 +1,43 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>緊急確認</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1">
 
-<style>
-body{
-    font-family:sans-serif;
-    text-align:center;
-    background:#111;
-    color:white;
-    margin:0;
-    padding-top:100px;
-}
+    <title>緊急生誕確認システム</title>
 
-h1{
-    color:red;
-}
-
-button{
-    font-size:24px;
-    padding:15px 30px;
-    margin:20px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
-</style>
+    <link rel="stylesheet"
+          href="css/style.css">
 </head>
-
 <body>
 
-<h1>⚠ 緊急確認 ⚠</h1>
-<h2>今日は〇〇さんの誕生日ですか？</h2>
+    <h1>
+        ⚠ 緊急生誕確認システム ⚠
+    </h1>
 
-<button id="yes">はい</button>
-<button id="no">いいえ</button>
+    <div id="question">
+        ○○さんは本日誕生日ですか？
+    </div>
 
-<script>
-const yes = document.getElementById("yes");
-const no = document.getElementById("no");
+    <div id="chargeText">
+        ゲージをためろ！！
+    </div>
 
-function runAway(){
-    const maxX = window.innerWidth - yes.offsetWidth;
-    const maxY = window.innerHeight - yes.offsetHeight;
+    <button id="yes">はい</button>
+    <button id="no">いいえ</button>
 
-    yes.style.position = "fixed";
-    yes.style.left = Math.random() * maxX + "px";
-    yes.style.top = Math.random() * maxY + "px";
-}
+    <div id="gaugeBox">
+        <div id="gauge"></div>
+    </div>
 
-// PC用
-yes.addEventListener("mouseover", runAway);
+    <div id="modal"></div>
 
-// スマホ用
-yes.addEventListener("touchstart", function(e){
-    e.preventDefault();
-    runAway();
-});
-
-no.addEventListener("click", function(){
-    document.body.innerHTML = `
-        <h1 style="margin-top:150px;color:gold">
-            🎉 HAPPY BIRTHDAY 🎉
-        </h1>
-        <h2>誕生日おめでとう！！</h2>
-    `;
-});
-</script>
+    <script src="js/movement.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/gauge.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>
