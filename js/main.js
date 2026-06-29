@@ -15,7 +15,12 @@ function yesTouched(e){
 
     count++;
 
-    move(yes);
+    if(escapeMode){
+        move(yes);
+        move(no);
+    }else{
+        move(yes);
+    }
 
     eventCheck();
 }
