@@ -1,0 +1,7 @@
+function startCharge(){
+    ...
+}
+
+function stopCharge(){
+    ...
+}
