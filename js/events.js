@@ -6,12 +6,11 @@ function unlockNo(){
 
             e.preventDefault();
 
-            move(no);
+            move(no);   // いいえ逃走
+            move(yes);  // はいも逃走
         }
     );
 
-    // 最初に一回移動させて
-    // 「あっ逃げた！」感を演出
     move(no);
 }
 
