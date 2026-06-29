@@ -60,6 +60,11 @@ button{
     position:relative;
 }
 
+#modalContent img{
+    max-width:100%;
+    border-radius:10px;
+}
+
 #close{
     position:absolute;
     right:10px;
