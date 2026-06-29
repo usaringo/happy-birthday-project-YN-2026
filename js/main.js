@@ -1,4 +1,7 @@
-let count=0;
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+
+let count = 0;
 
 yes.addEventListener(
     "touchstart",
