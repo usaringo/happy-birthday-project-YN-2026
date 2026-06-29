@@ -3,45 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>緊急告知</title>
+<title>緊急確認</title>
 
 <style>
 body{
-    background:#000;
-    color:white;
     font-family:sans-serif;
     text-align:center;
+    background:#111;
+    color:white;
+    margin:0;
     padding-top:100px;
 }
 
 h1{
     color:red;
-    font-size:50px;
 }
 
-.box{
-    border:2px solid red;
-    width:500px;
-    margin:auto;
-    padding:20px;
+button{
+    font-size:24px;
+    padding:15px 30px;
+    margin:20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
-    <h1>⚠ 緊急速報 ⚠</h1>
+<h1>⚠ 緊急確認 ⚠</h1>
+<h2>今日は〇〇さんの誕生日ですか？</h2>
 
-    <h2>〇〇様の誕生日を確認</h2>
+<button id="yes">はい</button>
+<button id="no">いいえ</button>
 
-    <p>
-        生誕イベントが発生しました。<br>
-        全世界のお祝いモードを起動します。
-    </p>
+<script>
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
 
-    <h1>🎉 HAPPY BIRTHDAY 🎉</h1>
-</div>
+function runAway(){
+    const maxX = window.innerWidth - yes.offsetWidth;
+    const maxY = window.innerHeight - yes.offsetHeight;
+
+    yes.style.position = "fixed";
+    yes.style.left = Math.random() * maxX + "px";
+    yes.style.top = Math.random() * maxY + "px";
+}
+
+// PC用
+yes.addEventListener("mouseover", runAway);
+
+// スマホ用
+yes.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    runAway();
+});
+
+no.addEventListener("click", function(){
+    document.body.innerHTML = `
+        <h1 style="margin-top:150px;color:gold">
+            🎉 HAPPY BIRTHDAY 🎉
+        </h1>
+        <h2>誕生日おめでとう！！</h2>
+    `;
+});
+</script>
 
 </body>
 </html>
