@@ -1,13 +1,15 @@
 function unlockNo(){
 
+    escapeMode = true;
+
     no.addEventListener(
         "touchstart",
         function(e){
 
             e.preventDefault();
 
-            move(no);   // いいえ逃走
-            move(yes);  // はいも逃走
+            move(yes);
+            move(no);
         }
     );
 
