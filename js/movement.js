@@ -1,13 +1,18 @@
 function move(el){
 
-    const x=
-        Math.random()*
-        (window.innerWidth-el.offsetWidth);
+    const maxX =
+        window.innerWidth
+        - el.offsetWidth
+        - 20;
 
-    const y=
-        Math.random()*
-        (window.innerHeight-el.offsetHeight);
+    const maxY =
+        window.innerHeight
+        - el.offsetHeight
+        - 20;
 
-    el.style.left=x+"px";
-    el.style.top=y+"px";
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    el.style.left = x + "px";
+    el.style.top  = y + "px";
 }
