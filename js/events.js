@@ -8,8 +8,12 @@ function unlockNo(){
 
             e.preventDefault();
 
+            count++;          // ←追加
+
             move(yes);
             move(no);
+
+            eventCheck();     // ←追加
         }
     );
 
