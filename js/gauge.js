@@ -1,7 +1,7 @@
-function startCharge(){
-    ...
+function startCharge() {
+    console.log("charge start");
 }
 
-function stopCharge(){
-    ...
+function stopCharge() {
+    console.log("charge stop");
 }
