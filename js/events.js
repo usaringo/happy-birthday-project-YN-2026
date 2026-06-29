@@ -1,3 +1,14 @@
+function unlockNo(){
+    console.log("unlockNo");
+}
+
+function convertToYesNo(){
+    console.log("convertToYesNo");
+}
+
+function finalMode(){
+    console.log("finalMode");
+}
 function eventCheck(){
 
     switch(count){
