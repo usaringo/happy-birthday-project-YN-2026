@@ -45,6 +45,8 @@ function gameOver(){
 
 function continueGame(){
 
+    console.log("continue");
+
     location.reload();
 }
 
