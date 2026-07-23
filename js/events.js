@@ -45,8 +45,7 @@ function gameOver(){
 
 function continueGame(){
 
-    document.getElementById("gameOver")
-        .style.display = "none";
+    location.reload();
 }
 
 function initGameOver(){
