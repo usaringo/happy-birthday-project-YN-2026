@@ -9,6 +9,10 @@ yes.addEventListener(
     "touchstart",
     yesTouched
 );
+no.addEventListener(
+    "touchstart",
+    noTouched
+);
 
 function yesTouched(e){
 
@@ -24,4 +28,10 @@ function yesTouched(e){
     }
 
     eventCheck();
+}
+function noTouched(e){
+
+    e.preventDefault();
+
+    gameOver();
 }
