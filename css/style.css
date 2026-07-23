@@ -97,3 +97,97 @@ button{
     color:white;
     font-size:28px;
 }
+
+/* =========================
+   GAME OVER
+========================= */
+
+#gameOver{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    z-index:9999;
+
+    text-align:center;
+
+    animation:fadeIn 0.8s;
+}
+
+#gameOver h1{
+
+    margin-top:120px;
+
+    color:#8b0000;
+
+    font-size:90px;
+
+    font-family:serif;
+
+    letter-spacing:8px;
+
+    text-shadow:
+        0 0 8px #ff0000,
+        0 0 20px #550000;
+}
+
+#gameOver p{
+
+    margin-top:30px;
+
+    color:#dddddd;
+
+    font-size:26px;
+
+    letter-spacing:2px;
+}
+
+#gameOver button{
+
+    position:static;
+
+    display:block;
+
+    width:260px;
+
+    margin:20px auto;
+
+    padding:18px;
+
+    font-size:24px;
+
+    background:#111;
+
+    color:white;
+
+    border:2px solid #8b0000;
+
+    border-radius:0;
+
+    transition:.2s;
+}
+
+#gameOver button:hover{
+
+    background:#8b0000;
+
+    color:white;
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+    }
+
+    to{
+
+        opacity:1;
+    }
+}
