@@ -48,3 +48,32 @@ function eventCheck(){
             break;
     }
 }
+
+function gameOver(){
+
+    document.getElementById("gameOver")
+        .style.display = "block";
+}
+
+function continueGame(){
+
+    document.getElementById("gameOver")
+        .style.display = "none";
+}
+
+function initGameOver(){
+
+    document
+        .getElementById("continue1")
+        .addEventListener(
+            "click",
+            continueGame
+        );
+
+    document
+        .getElementById("continue2")
+        .addEventListener(
+            "click",
+            continueGame
+        );
+}
