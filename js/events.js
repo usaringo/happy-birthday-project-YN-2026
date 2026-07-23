@@ -1,22 +1,9 @@
 function unlockNo(){
 
+    // 3回目以降は両方逃げるようにする
     escapeMode = true;
 
-    no.addEventListener(
-        "touchstart",
-        function(e){
-
-            e.preventDefault();
-
-            count++;          // ←追加
-
-            move(yes);
-            move(no);
-
-            eventCheck();     // ←追加
-        }
-    );
-
+    // 「いいえ」を一度だけ逃がす
     move(no);
 }
 
@@ -27,6 +14,7 @@ function convertToYesNo(){
 function finalMode(){
     console.log("finalMode");
 }
+
 function eventCheck(){
 
     switch(count){
