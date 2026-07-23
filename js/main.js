@@ -1,3 +1,4 @@
+initGameOver();
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 
