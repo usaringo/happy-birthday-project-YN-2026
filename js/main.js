@@ -1,4 +1,5 @@
 initGameOver();
+
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 
@@ -9,6 +10,7 @@ yes.addEventListener(
     "touchstart",
     yesTouched
 );
+
 no.addEventListener(
     "touchstart",
     noTouched
@@ -21,14 +23,18 @@ function yesTouched(e){
     count++;
 
     if(escapeMode){
+
         move(yes);
-        move(no);
+        moveAllNoButtons();
+
     }else{
+
         move(yes);
     }
 
     eventCheck();
 }
+
 function noTouched(e){
 
     e.preventDefault();
