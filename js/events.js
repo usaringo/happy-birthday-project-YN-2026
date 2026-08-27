@@ -15,11 +15,21 @@ function finalMode(){
 
     console.log("10回目！ミニゲーム開始");
 
+    // 通常画面を隠す
     document.getElementById("question").style.display = "none";
     document.getElementById("yes").style.display = "none";
     document.getElementById("no").style.display = "none";
 
+    // 追加された「いいえ」も全部消す
+    document
+        .querySelectorAll(".noClone")
+        .forEach(function(button){
+            button.style.display = "none";
+        });
+
+    // ゲージ表示
     document.getElementById("gaugeBox").style.display = "block";
+
     document.getElementById("chargeText").style.display = "block";
 
     startCharge();
