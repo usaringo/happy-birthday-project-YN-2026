@@ -12,7 +12,26 @@ function convertToYesNo(){
 }
 
 function finalMode(){
-    console.log("finalMode");
+
+    // 通常画面を隠す
+    document.getElementById("question").style.display = "none";
+    document.getElementById("yes").style.display = "none";
+    document.getElementById("no").style.display = "none";
+
+    // ゲージ表示
+    document.getElementById("gaugeBox").style.display = "block";
+
+    // 説明表示
+    const chargeText =
+        document.getElementById("chargeText");
+
+    chargeText.textContent =
+        "ゲージをMAXにしろ！！";
+
+    chargeText.style.display = "block";
+
+    // ミニゲーム開始
+    startCharge();
 }
 
 function eventCheck(){
