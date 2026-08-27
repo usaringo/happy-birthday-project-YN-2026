@@ -13,24 +13,15 @@ function convertToYesNo(){
 
 function finalMode(){
 
-    // 通常画面を隠す
+    console.log("10回目！ミニゲーム開始");
+
     document.getElementById("question").style.display = "none";
     document.getElementById("yes").style.display = "none";
     document.getElementById("no").style.display = "none";
 
-    // ゲージ表示
     document.getElementById("gaugeBox").style.display = "block";
+    document.getElementById("chargeText").style.display = "block";
 
-    // 説明表示
-    const chargeText =
-        document.getElementById("chargeText");
-
-    chargeText.textContent =
-        "ゲージをMAXにしろ！！";
-
-    chargeText.style.display = "block";
-
-    // ミニゲーム開始
     startCharge();
 }
 
