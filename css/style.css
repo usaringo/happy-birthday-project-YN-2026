@@ -187,3 +187,12 @@ button{
         opacity:1;
     }
 }
+
+#yes{
+    z-index: 10;
+}
+
+#no,
+.noClone{
+    z-index: 5;
+}
