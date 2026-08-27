@@ -3,6 +3,8 @@ let charging = false;
 
 function startCharge(){
 
+    console.log("ゲージゲーム開始");
+
     gaugeValue = 0;
     charging = true;
 
@@ -18,7 +20,11 @@ function chargeGauge(e){
 
     if(!charging) return;
 
+    e.preventDefault();
+
     gaugeValue += 10;
+
+    updateGauge();
 
     if(gaugeValue >= 100){
 
@@ -27,11 +33,7 @@ function chargeGauge(e){
         updateGauge();
 
         stopCharge();
-
-        return;
     }
-
-    updateGauge();
 }
 
 function updateGauge(){
@@ -50,6 +52,7 @@ function stopCharge(){
     );
 
     document.getElementById("chargeText")
-        .textContent =
-        "MAX！！";
+        .textContent = "MAX！！";
+
+    console.log("ゲージMAX！");
 }
