@@ -66,3 +66,12 @@ function initGameOver(){
             continueGame
         );
 }
+
+function moveAllNoButtons(){
+
+    move(no);
+
+    document
+        .querySelectorAll(".noClone")
+        .forEach(el => move(el));
+}
