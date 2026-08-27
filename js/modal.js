@@ -2,7 +2,30 @@ const modal =
     document.getElementById("modal");
 
 function createNoButtons(){
-    console.log("createNoButtons");
+
+    // すでに作られている複製を削除
+    document
+        .querySelectorAll(".noClone")
+        .forEach(el => el.remove());
+
+    // いいえを2個複製
+    for(let i = 0; i < 2; i++){
+
+        const clone = no.cloneNode(true);
+
+        clone.id = "";
+
+        clone.classList.add("noClone");
+
+        document.body.appendChild(clone);
+
+        move(clone);
+
+        clone.addEventListener(
+            "touchstart",
+            noTouched
+        );
+    }
 }
 
 function showImageModal(){
