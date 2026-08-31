@@ -190,21 +190,46 @@ function stopBlock(){
 
 function stackClear(){
 
+    // 動いている柱を止める
+    if(movingTimer){
+        cancelAnimationFrame(movingTimer);
+    }
+
     document.getElementById("stackGame")
         .innerHTML = `
 
-        <h1>
-            🎉🎉🎉
-        </h1>
+        <div id="cakeComplete">
 
-        <h2>
-            STACK CLEAR!!
-        </h2>
+            <div class="cakeMessage">
+                🎉 CAKE COMPLETE!! 🎉
+            </div>
 
-        <p>
-            お誕生日おめでとう！！
-        </p>
+            <div class="cake">
 
+                <div class="candle">
+                    🔥
+                </div>
+
+                <div class="cakeTop">
+                    🎂
+                </div>
+
+                <div class="cakeBody">
+                    HAPPY
+                </div>
+
+                <div class="cakeBottom">
+                    BIRTHDAY
+                </div>
+
+            </div>
+
+            <div class="cakeText">
+                ○○さん<br>
+                お誕生日おめでとう！！
+            </div>
+
+        </div>
     `;
 
     setTimeout(function(){
@@ -212,5 +237,5 @@ function stackClear(){
         location.href =
             "birthday.html";
 
-    }, 2000);
+    }, 5000);
 }
