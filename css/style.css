@@ -555,3 +555,21 @@ button:active{
 
     font-size:30px;
 }
+.welcome{
+
+    margin:10px auto;
+
+    width:90%;
+
+    padding:10px;
+
+    background:#00ffff;
+
+    color:#ff0000;
+
+    border:5px dashed #ff00ff;
+
+    font-size:20px;
+
+    font-weight:bold;
+}
