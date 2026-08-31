@@ -573,3 +573,33 @@ button:active{
 
     font-weight:bold;
 }
+#maxButton{
+
+    display:none;
+
+    position:fixed;
+
+    left:50%;
+
+    top:65%;
+
+    transform:translateX(-50%);
+
+    width:280px;
+
+    padding:20px;
+
+    background:#ff0000;
+
+    color:#ffff00;
+
+    border:8px outset #ffff00;
+
+    font-size:26px;
+
+    font-weight:bold;
+
+    z-index:5000;
+
+    animation:blink 0.5s infinite alternate;
+}
