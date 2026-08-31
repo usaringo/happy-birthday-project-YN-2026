@@ -90,21 +90,20 @@ function startStackGame(){
 
 function getMovingBlockTop(){
 
-    const stackButton =
-        document.getElementById("stackButton");
+    const stackGame =
+        document.getElementById("stackGame");
 
-    const buttonRect =
-        stackButton.getBoundingClientRect();
+    const gameHeight =
+        stackGame.clientHeight;
 
-    const gap = 30;
+    const bottomSpace = 150;
 
     const stackHeight =
         stackCount * BLOCK_HEIGHT;
 
     return (
-        buttonRect.top -
-        gap -
-        BLOCK_HEIGHT -
+        gameHeight -
+        bottomSpace -
         stackHeight
     );
 }
@@ -422,54 +421,50 @@ function addBlock(
     const tower =
         document.getElementById("tower");
 
-
     const block =
         document.createElement("div");
-
 
     block.className =
         "stackBlock";
 
-
     block.style.width =
         width + "px";
-
 
     block.style.height =
         BLOCK_HEIGHT + "px";
 
-
     block.style.position =
         "absolute";
-
 
     block.style.left =
         left + "px";
 
 
+    /*
+       PUSHボタンより上に
+       柱を積み上げる
+    */
+
+    const stackBottom = 140;
+
     block.style.bottom =
         (
-            stackCount *
-            BLOCK_HEIGHT +
-            40
+            stackBottom +
+            stackCount * BLOCK_HEIGHT
         ) + "px";
 
 
     block.style.background =
         "#00ffff";
 
-
     block.style.border =
         "5px outset #ffff00";
-
 
     block.style.zIndex =
         "550";
 
-
     tower.appendChild(block);
 }
-
 
 /* =========================
    次の柱
