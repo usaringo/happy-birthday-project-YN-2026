@@ -201,8 +201,8 @@ button:active{
 #yes{
 
     left:25%;
-
-    top:60%;
+    top:auto;
+    bottom:120px;
 
     background:
         linear-gradient(
@@ -222,8 +222,8 @@ button:active{
 #no{
 
     left:55%;
-
-    top:60%;
+    top:auto;
+    bottom:120px;
 
     background:
         linear-gradient(
