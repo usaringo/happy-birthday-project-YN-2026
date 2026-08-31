@@ -3,13 +3,17 @@ let charging = false;
 
 function startCharge(){
 
-    console.log("ゲージゲーム開始");
-
     gaugeValue = 0;
     charging = true;
 
+    document.getElementById("gaugeBox")
+        .style.display = "block";
+
     document.getElementById("chargeText")
-        .textContent = "ゲージをMAXにしろ！！";
+        .style.display = "block";
+
+    document.getElementById("maxButton")
+        .style.display = "none";
 
     updateGauge();
 
@@ -27,6 +31,8 @@ function chargeGauge(e){
 
     gaugeValue += 10;
 
+    updateGauge();
+
     if(gaugeValue >= 100){
 
         gaugeValue = 100;
@@ -34,17 +40,14 @@ function chargeGauge(e){
         updateGauge();
 
         stopCharge();
-
-        return;
     }
-
-    updateGauge();
 }
 
 function updateGauge(){
 
     document.getElementById("gauge")
-        .style.height = gaugeValue + "%";
+        .style.height =
+        gaugeValue + "%";
 }
 
 function stopCharge(){
@@ -56,20 +59,11 @@ function stopCharge(){
         chargeGauge
     );
 
-    const chargeText =
-        document.getElementById("chargeText");
+    document.getElementById("chargeText")
+        .textContent =
+        "🔥 ゲージMAX！！ 🔥";
 
-    chargeText.textContent =
-        "🔥 MAX！！🔥\nタップして次のゲームへ！";
-
-    // MAXになったらタップ待ち
-    chargeText.style.cursor = "pointer";
-
-    chargeText.addEventListener(
-        "touchstart",
-        startStackGame,
-        { once:true }
-    );
-
-    console.log("ゲージMAX！タップ待ち");
+    // MAXボタンを表示
+    document.getElementById("maxButton")
+        .style.display = "block";
 }
