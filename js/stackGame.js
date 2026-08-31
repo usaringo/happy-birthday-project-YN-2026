@@ -84,29 +84,6 @@ function startStackGame(){
     createMovingBlock();
 }
 
-/* =========================
-   動く柱の位置を計算
-========================= */
-
-function getMovingBlockTop(){
-
-    const stackGame =
-        document.getElementById("stackGame");
-
-    const gameHeight =
-        stackGame.clientHeight;
-
-    const bottomSpace = 150;
-
-    const stackHeight =
-        stackCount * BLOCK_HEIGHT;
-
-    return (
-        gameHeight -
-        bottomSpace -
-        stackHeight
-    );
-}
 
 /* =========================
    動く柱を作る
@@ -141,8 +118,8 @@ function createMovingBlock(){
         "absolute";
 
 
-    movingBlock.style.top =
-       getMovingBlockTop() + "px";
+   movingBlock.style.top =
+       "150px";
 
 
     movingBlock.style.background =
