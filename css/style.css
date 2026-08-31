@@ -2,96 +2,384 @@
     box-sizing:border-box;
 }
 
+html{
+    background:#000080;
+}
+
 body{
     margin:0;
-    background:#000;
-    color:#ff3333;
-    font-family:sans-serif;
+    min-height:100vh;
+
+    background:
+        radial-gradient(circle,#ffff00 1px,transparent 2px),
+        #000080;
+
+    background-size:25px 25px;
+
+    color:#ffffff;
+
+    font-family:
+        "Comic Sans MS",
+        "MS PGothic",
+        sans-serif;
+
     text-align:center;
+
     overflow:hidden;
 }
 
+/* =========================
+   タイトル
+========================= */
+
 h1{
-    margin-top:40px;
+    margin:10px auto;
+
+    padding:15px;
+
+    width:95%;
+
+    color:#ffff00;
+
+    background:
+        linear-gradient(
+            #ff00ff,
+            #ff0000,
+            #ffff00
+        );
+
+    border:
+        8px ridge #00ffff;
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    text-shadow:
+        3px 3px #000,
+        -2px -2px #ff00ff;
+
+    animation:
+        titleFlash 0.8s infinite alternate;
 }
+
+@keyframes titleFlash{
+
+    from{
+        filter:brightness(1);
+    }
+
+    to{
+        filter:brightness(1.7);
+    }
+}
+
+/* =========================
+   質問
+========================= */
 
 #question{
-    margin-top:20px;
-    font-size:24px;
+
+    margin:20px auto;
+
+    width:90%;
+
+    padding:15px;
+
+    background:#ffffff;
+
+    color:#ff0000;
+
+    border:
+        6px double #ff00ff;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    box-shadow:
+        10px 10px 0 #000,
+        0 0 15px #ffff00;
 }
+
+/* =========================
+   ゲージ説明
+========================= */
+
+#chargeText{
+
+    display:none;
+
+    margin:20px auto;
+
+    padding:10px;
+
+    width:80%;
+
+    color:#ffff00;
+
+    background:#ff0000;
+
+    border:
+        6px outset #ffff00;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    text-shadow:3px 3px #000;
+
+    animation:
+        blink 0.5s infinite alternate;
+}
+
+@keyframes blink{
+
+    from{
+        opacity:1;
+    }
+
+    to{
+        opacity:.4;
+    }
+}
+
+/* =========================
+   ボタン
+========================= */
 
 button{
+
     position:fixed;
+
     padding:15px 30px;
-    font-size:20px;
-    border:none;
-    border-radius:10px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    font-family:
+        "Comic Sans MS",
+        "MS PGothic",
+        sans-serif;
+
     cursor:pointer;
+
+    border:
+        6px outset #ffffff;
+
+    border-radius:5px;
+
+    background:
+        linear-gradient(
+            #ffff00,
+            #ff9900
+        );
+
+    color:#000080;
+
+    text-shadow:1px 1px #fff;
+
+    box-shadow:
+        5px 5px 0 #000;
+
+    z-index:5;
 }
+
+button:active{
+
+    border-style:inset;
+
+    transform:
+        translate(4px,4px);
+}
+
+/* =========================
+   はい
+========================= */
 
 #yes{
+
     left:25%;
+
     top:60%;
+
+    background:
+        linear-gradient(
+            #00ff00,
+            #00aa00
+        );
+
+    color:#000;
+
+    z-index:10;
 }
+
+/* =========================
+   いいえ
+========================= */
 
 #no{
+
     left:55%;
+
     top:60%;
+
+    background:
+        linear-gradient(
+            #ff6666,
+            #ff0000
+        );
+
+    color:#ffffff;
+
+    z-index:5;
 }
 
+/* 複製された「いいえ」 */
+
+.noClone{
+
+    background:
+        linear-gradient(
+            #ff6666,
+            #ff0000
+        );
+
+    color:#ffffff;
+
+    z-index:5;
+}
+
+/* =========================
+   モーダル
+========================= */
+
 #modal{
+
     display:none;
+
     position:fixed;
+
     inset:0;
-    background:rgba(0,0,0,.8);
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(0,0,0,.8),
+            rgba(0,0,0,.8) 10px,
+            rgba(80,0,80,.8) 10px,
+            rgba(80,0,80,.8) 20px
+        );
+
     z-index:100;
 }
 
 #modalContent{
-    background:white;
-    color:black;
+
+    background:
+        linear-gradient(
+            #ffff00,
+            #ffffff
+        );
+
+    color:#000;
+
     width:80%;
-    margin:100px auto;
+
+    margin:80px auto;
+
     padding:20px;
+
     position:relative;
+
+    border:
+        10px ridge #ff00ff;
+
+    box-shadow:
+        0 0 30px #ffff00;
+}
+
+#modalContent h2{
+
+    color:#ff0000;
+
+    font-size:35px;
+
+    text-decoration:
+        underline blink;
 }
 
 #modalContent img{
+
     max-width:100%;
-    border-radius:10px;
+
+    border:
+        8px ridge #00ffff;
+
 }
 
 #close{
+
     position:absolute;
+
     right:10px;
-    top:10px;
+
+    top:5px;
+
     cursor:pointer;
-    font-size:30px;
+
+    font-size:40px;
+
+    color:#ff0000;
+
+    font-weight:bold;
 }
 
+/* =========================
+   ゲージ
+========================= */
+
 #gaugeBox{
+
     display:none;
+
     position:fixed;
-    right:10px;
-    top:30%;
-    width:40px;
-    height:300px;
-    border:2px solid white;
+
+    right:30px;
+
+    top:25%;
+
+    width:50px;
+
+    height:350px;
+
+    border:
+        8px ridge #ffffff;
+
+    background:#222;
+
+    z-index:20;
 }
 
 #gauge{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:0%;
-    background:lime;
-}
 
-#chargeText{
-    display:none;
-    margin-top:20px;
-    color:white;
-    font-size:28px;
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:0%;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            #00ff00,
+            #00ff00 10px,
+            #00aa00 10px,
+            #00aa00 20px
+        );
 }
 
 /* =========================
@@ -112,35 +400,44 @@ button{
 
     text-align:center;
 
-    animation:fadeIn 0.8s;
+    animation:gameOverIn .8s;
 }
 
 #gameOver h1{
 
     margin-top:120px;
 
-    color:#8b0000;
+    width:auto;
+
+    background:none;
+
+    border:none;
+
+    color:#ff0000;
 
     font-size:90px;
 
-    font-family:serif;
+    font-family:
+        Georgia,
+        serif;
 
-    letter-spacing:8px;
+    letter-spacing:10px;
 
     text-shadow:
-        0 0 8px #ff0000,
-        0 0 20px #550000;
+        0 0 10px #ff0000,
+        0 0 30px #ff0000;
+
+    animation:
+        gameOverFlash .3s infinite alternate;
 }
 
 #gameOver p{
 
-    margin-top:30px;
+    color:#ffffff;
 
-    color:#dddddd;
+    font-size:25px;
 
-    font-size:26px;
-
-    letter-spacing:2px;
+    letter-spacing:3px;
 }
 
 #gameOver button{
@@ -149,50 +446,112 @@ button{
 
     display:block;
 
-    width:260px;
+    width:280px;
 
     margin:20px auto;
 
-    padding:18px;
-
-    font-size:24px;
-
     background:#111;
 
-    color:white;
+    color:#ffffff;
 
-    border:2px solid #8b0000;
+    border:
+        3px solid #990000;
 
     border-radius:0;
 
-    transition:.2s;
+    box-shadow:none;
+
+    text-shadow:none;
 }
 
 #gameOver button:hover{
 
-    background:#8b0000;
+    background:#660000;
 
-    color:white;
 }
 
-@keyframes fadeIn{
+@keyframes gameOverIn{
 
     from{
-
         opacity:0;
     }
 
     to{
-
         opacity:1;
     }
 }
 
-#yes{
-    z-index: 10;
+@keyframes gameOverFlash{
+
+    from{
+        opacity:1;
+    }
+
+    to{
+        opacity:.5;
+    }
 }
 
-#no,
-.noClone{
-    z-index: 5;
+/* =========================
+   柱積みゲーム
+========================= */
+
+#stackGame{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            #000080,
+            #000080 20px,
+            #0000aa 20px,
+            #0000aa 40px
+        );
+
+    z-index:500;
+
+    color:#ffff00;
+}
+
+#stackGame h2{
+
+    margin:20px;
+
+    font-size:36px;
+
+    color:#ffff00;
+
+    text-shadow:
+        4px 4px #ff0000;
+}
+
+#stackButton{
+
+    position:fixed;
+
+    bottom:30px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:250px;
+
+    background:
+        linear-gradient(
+            #ff00ff,
+            #ff0000
+        );
+
+    color:#ffff00;
+
+    border:
+        8px outset #ffff00;
+
+    font-size:30px;
 }
