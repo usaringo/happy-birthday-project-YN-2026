@@ -90,20 +90,21 @@ function startStackGame(){
 
 function getMovingBlockTop(){
 
-    const stackGame =
-        document.getElementById("stackGame");
+    const stackButton =
+        document.getElementById("stackButton");
 
-    const gameHeight =
-        stackGame.clientHeight;
+    const buttonRect =
+        stackButton.getBoundingClientRect();
 
-    const bottomSpace = 150;
+    const gap = 30;
 
     const stackHeight =
         stackCount * BLOCK_HEIGHT;
 
     return (
-        gameHeight -
-        bottomSpace -
+        buttonRect.top -
+        gap -
+        BLOCK_HEIGHT -
         stackHeight
     );
 }
