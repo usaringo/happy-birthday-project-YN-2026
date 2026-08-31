@@ -1,5 +1,22 @@
-let stackCount = 0;
+const maxButton =
+    document.getElementById("maxButton");
 
+maxButton.addEventListener(
+    "touchstart",
+    function(e){
+
+        e.preventDefault();
+
+        console.log("MAXタップ");
+
+        startStackGame();
+
+    },
+    { passive:false }
+);
+
+
+let stackCount = 0;
 let movingBlock = null;
 let movingTimer = null;
 
