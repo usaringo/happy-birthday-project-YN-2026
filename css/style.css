@@ -581,14 +581,26 @@ button:active{
     position:fixed;
 
     left:50%;
-
     top:65%;
 
     transform:translateX(-50%);
 
-    width:280px;
+    width:260px;
+    height:110px;
 
-    padding:20px;
+    padding:10px;
+
+    margin:0;
+
+    font-size:20px;
+
+    line-height:1.4;
+
+    font-weight:bold;
+
+    white-space:normal;
+
+    overflow:hidden;
 
     background:#ff0000;
 
@@ -596,9 +608,9 @@ button:active{
 
     border:8px outset #ffff00;
 
-    font-size:26px;
+    border-radius:5px;
 
-    font-weight:bold;
+    box-shadow:5px 5px 0 #000;
 
     z-index:5000;
 
