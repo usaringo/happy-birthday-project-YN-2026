@@ -1,17 +1,24 @@
 let stackCount = 0;
+
 let movingBlock = null;
 let movingTimer = null;
+
 let movingDirection = 1;
 let movingX = 0;
 
-const BLOCK_WIDTH = 140;
 const BLOCK_HEIGHT = 30;
+
+let blockWidth = 140;
+
+
+/* =========================
+   柱積みゲーム開始
+========================= */
 
 function startStackGame(){
 
     console.log("柱積みゲーム開始！");
 
-    // ゲージ画面を消す
     document.getElementById("gaugeBox")
         .style.display = "none";
 
@@ -21,12 +28,12 @@ function startStackGame(){
     document.getElementById("maxButton")
         .style.display = "none";
 
-    // 柱積みゲーム表示
     document.getElementById("stackGame")
         .style.display = "block";
 
-    // 初期化
     stackCount = 0;
+
+    blockWidth = 140;
 
     document.getElementById("tower")
         .innerHTML = "";
@@ -36,7 +43,7 @@ function startStackGame(){
 
 
 /* =========================
-   流れてくる柱を作る
+   動く柱を作る
 ========================= */
 
 function createMovingBlock(){
@@ -52,16 +59,13 @@ function createMovingBlock(){
         "movingStackBlock";
 
     movingBlock.style.width =
-        BLOCK_WIDTH + "px";
+        blockWidth + "px";
 
     movingBlock.style.height =
         BLOCK_HEIGHT + "px";
 
     movingBlock.style.position =
         "absolute";
-
-    movingBlock.style.left =
-        "0px";
 
     movingBlock.style.top =
         "150px";
@@ -70,6 +74,7 @@ function createMovingBlock(){
         .appendChild(movingBlock);
 
     movingX = 0;
+
     movingDirection = 1;
 
     movingTimer =
@@ -78,17 +83,19 @@ function createMovingBlock(){
 
 
 /* =========================
-   柱を左右に動かす
+   左右に動かす
 ========================= */
 
 function moveBlock(){
 
     if(!movingBlock) return;
 
-    movingX += 4 * movingDirection;
+    movingX +=
+        4 * movingDirection;
 
     const maxX =
-        window.innerWidth - BLOCK_WIDTH;
+        window.innerWidth -
+        blockWidth;
 
     if(movingX >= maxX){
 
@@ -116,24 +123,179 @@ function moveBlock(){
    PUSH!!
 ========================= */
 
-document
-    .getElementById("stackButton")
-    .addEventListener(
+function setupStackButton(){
+
+    const button =
+        document.getElementById("stackButton");
+
+    if(!button) return;
+
+    button.addEventListener(
         "touchstart",
         function(e){
 
             e.preventDefault();
 
             stopBlock();
-        }
-    );
 
+        },
+        { passive:false }
+    );
+}
+
+
+/* =========================
+   柱を止める
+========================= */
 
 function stopBlock(){
 
     if(!movingBlock) return;
 
-    cancelAnimationFrame(movingTimer);
+    cancelAnimationFrame(
+        movingTimer
+    );
+
+
+    /* =========================
+       1段目
+    ========================= */
+
+    if(stackCount === 0){
+
+        addBlock(
+            movingX,
+            blockWidth
+        );
+
+        movingBlock.remove();
+
+        movingBlock = null;
+
+        stackCount++;
+
+        createNextBlock();
+
+        return;
+    }
+
+
+    /* =========================
+       下の柱を取得
+    ========================= */
+
+    const previousBlocks =
+        document.querySelectorAll(
+            ".stackBlock"
+        );
+
+    const previous =
+        previousBlocks[
+            previousBlocks.length - 1
+        ];
+
+
+    const previousLeft =
+        parseFloat(previous.style.left);
+
+    const previousWidth =
+        parseFloat(previous.style.width);
+
+
+    const currentLeft =
+        movingX;
+
+    const currentRight =
+        currentLeft + blockWidth;
+
+    const previousRight =
+        previousLeft + previousWidth;
+
+
+    /* =========================
+       重なっている範囲
+    ========================= */
+
+    const overlapLeft =
+        Math.max(
+            currentLeft,
+            previousLeft
+        );
+
+    const overlapRight =
+        Math.min(
+            currentRight,
+            previousRight
+        );
+
+    const overlapWidth =
+        overlapRight - overlapLeft;
+
+
+    /* =========================
+       完全に外れた
+    ========================= */
+
+    if(overlapWidth <= 0){
+
+        movingBlock.remove();
+
+        movingBlock = null;
+
+        stackGameOver();
+
+        return;
+    }
+
+
+    /* =========================
+       重なった部分だけ残す
+    ========================= */
+
+    blockWidth =
+        overlapWidth;
+
+
+    addBlock(
+        overlapLeft,
+        overlapWidth
+    );
+
+
+    movingBlock.remove();
+
+    movingBlock = null;
+
+    stackCount++;
+
+    console.log(
+        "現在：" +
+        stackCount +
+        "段"
+    );
+
+
+    /* =========================
+       6段完成
+    ========================= */
+
+    if(stackCount >= 6){
+
+        stackClear();
+
+        return;
+    }
+
+
+    createNextBlock();
+}
+
+
+/* =========================
+   柱を追加
+========================= */
+
+function addBlock(left, width){
 
     const tower =
         document.getElementById("tower");
@@ -145,7 +307,7 @@ function stopBlock(){
         "stackBlock";
 
     block.style.width =
-        BLOCK_WIDTH + "px";
+        width + "px";
 
     block.style.height =
         BLOCK_HEIGHT + "px";
@@ -154,45 +316,85 @@ function stopBlock(){
         "absolute";
 
     block.style.left =
-        movingBlock.style.left;
+        left + "px";
 
     block.style.bottom =
-        (stackCount * BLOCK_HEIGHT + 40) + "px";
+        (stackCount *
+        BLOCK_HEIGHT +
+        40) + "px";
 
     tower.appendChild(block);
-
-    movingBlock.remove();
-
-    movingBlock = null;
-
-    stackCount++;
-
-    // 6段成功
-    if(stackCount >= 6){
-
-        stackClear();
-
-        return;
-    }
-
-    // 次の柱
-    setTimeout(function(){
-
-        createMovingBlock();
-
-    }, 300);
 }
 
 
 /* =========================
-   10段成功
+   次の柱
+========================= */
+
+function createNextBlock(){
+
+    setTimeout(function(){
+
+        createMovingBlock();
+
+    },300);
+}
+
+
+/* =========================
+   ゲームオーバー
+========================= */
+
+function stackGameOver(){
+
+    document.getElementById("stackGame")
+        .innerHTML = `
+
+        <div id="stackGameOver">
+
+            <h1>
+                GAME OVER
+            </h1>
+
+            <p>
+                柱が崩れました……
+            </p>
+
+            <button id="stackRetry">
+                もう一度挑戦！
+            </button>
+
+        </div>
+    `;
+
+
+    document
+        .getElementById("stackRetry")
+        .addEventListener(
+            "touchstart",
+            function(e){
+
+                e.preventDefault();
+
+                location.reload();
+
+            },
+            { passive:false }
+        );
+}
+
+
+/* =========================
+   6段完成
 ========================= */
 
 function stackClear(){
 
-    // 動いている柱を止める
     if(movingTimer){
-        cancelAnimationFrame(movingTimer);
+
+        cancelAnimationFrame(
+            movingTimer
+        );
     }
 
     document.getElementById("stackGame")
@@ -225,17 +427,28 @@ function stackClear(){
             </div>
 
             <div class="cakeText">
-                ○○さん<br>
+
+                中俣さん<br>
+
                 お誕生日おめでとう！！
+
             </div>
 
         </div>
     `;
+
 
     setTimeout(function(){
 
         location.href =
             "birthday.html";
 
-    }, 5000);
+    },5000);
 }
+
+
+/* =========================
+   ゲーム開始時
+========================= */
+
+setupStackButton();
