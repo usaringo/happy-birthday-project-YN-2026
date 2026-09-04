@@ -1,0 +1,311 @@
+*{
+    box-sizing:border-box;
+}
+
+
+html{
+    background:#000080;
+}
+
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffff00 1px,
+            transparent 2px
+        ),
+        #000080;
+
+    background-size:25px 25px;
+
+    color:#ffffff;
+
+    font-family:
+        "Comic Sans MS",
+        "MS PGothic",
+        sans-serif;
+
+    text-align:center;
+
+    padding-bottom:40px;
+
+}
+
+
+/* =========================
+   上の謎バナー
+========================= */
+
+.welcome{
+
+    margin:10px auto;
+
+    width:95%;
+
+    padding:10px;
+
+    background:#00ffff;
+
+    color:#ff0000;
+
+    border:
+        5px dashed #ff00ff;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================
+   タイトル
+========================= */
+
+h1{
+
+    margin:15px auto;
+
+    width:95%;
+
+    padding:15px 5px;
+
+    background:
+        linear-gradient(
+            #ff00ff,
+            #ff0000,
+            #ffff00
+        );
+
+    color:#ffff00;
+
+    border:
+        8px ridge #00ffff;
+
+    font-size:32px;
+
+    text-shadow:
+        3px 3px #000;
+
+}
+
+
+/* =========================
+   メッセージ
+========================= */
+
+.message{
+
+    margin:15px auto;
+
+    width:90%;
+
+    padding:15px;
+
+    background:#ffffff;
+
+    color:#ff0000;
+
+    border:
+        6px double #ff00ff;
+
+    font-size:21px;
+
+    font-weight:bold;
+
+    box-shadow:
+        6px 6px 0 #000;
+
+}
+
+
+/* =========================
+   画像4枚
+========================= */
+
+#photoGrid{
+
+    width:94%;
+
+    margin:20px auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:15px;
+
+}
+
+
+.photoCard{
+
+    padding:6px;
+
+    background:#ffff00;
+
+    border:
+        6px ridge #ff00ff;
+
+    box-shadow:
+        5px 5px 0 #000;
+
+}
+
+
+.photoCard img{
+
+    display:block;
+
+    width:100%;
+
+    aspect-ratio:1 / 1;
+
+    object-fit:cover;
+
+    cursor:pointer;
+
+}
+
+
+/* タップしたとき */
+
+.photoCard:active{
+
+    transform:
+        translate(3px,3px);
+
+}
+
+
+/* =========================
+   モーダル
+========================= */
+
+#photoModal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    padding:20px;
+
+    background:
+        rgba(0,0,0,.92);
+
+    overflow-y:auto;
+
+}
+
+
+#modalContent{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:600px;
+
+    margin:30px auto;
+
+    padding:15px;
+
+    background:
+        linear-gradient(
+            #ffff00,
+            #ffffff
+        );
+
+    border:
+        10px ridge #ff00ff;
+
+    box-shadow:
+        0 0 30px #ffff00;
+
+}
+
+
+#modalImage{
+
+    display:block;
+
+    width:100%;
+
+    max-height:60vh;
+
+    object-fit:contain;
+
+    border:
+        6px ridge #00ffff;
+
+}
+
+
+#modalMessage{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#ff0000;
+
+    color:#ffff00;
+
+    border:
+        6px outset #ffff00;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    line-height:1.5;
+
+    text-shadow:
+        3px 3px #000;
+
+}
+
+
+/* =========================
+   閉じる
+========================= */
+
+#modalClose{
+
+    position:absolute;
+
+    top:5px;
+
+    right:5px;
+
+    width:50px;
+
+    height:50px;
+
+    padding:0;
+
+    background:#ff0000;
+
+    color:#ffffff;
+
+    border:
+        5px outset #ffffff;
+
+    font-size:35px;
+
+    line-height:35px;
+
+    z-index:10;
+
+}
