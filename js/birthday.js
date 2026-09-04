@@ -26,7 +26,7 @@ document
                 modalImage.src =
                     img.src;
 
-                modalMessage.textContent =
+                modalMessage.innerHTML =
                     img.dataset.message;
 
                 photoModal.style.display =
