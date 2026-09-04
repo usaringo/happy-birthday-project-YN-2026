@@ -574,6 +574,6 @@ function stackClear(){
                 "birthday.html";
 
         },
-        3000
+        1800
     );
 }
